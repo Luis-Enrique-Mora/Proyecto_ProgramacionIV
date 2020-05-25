@@ -1,26 +1,37 @@
 
 Use SamaraOrganicsServer
-
+Go
+Drop table if exists schedule
+create table schedule
+(
+	schedule_id int Identity(1,1),
+	schedule_name varchar(12),
+	--Constraints
+	--PK
+	Constraint PK_schedule Primary Key(schedule_id)
+)
+Go
 Drop table if Exists close_register
-
 create table close_register
 (
 	close_register_id int Identity(1,1),
+	close_register_date date not null,
+	schedule_fk int not null,
 	user_employee_fk int not null,
-	system_amount decimal(12,2),
-	amount_counted decimal(12,2),
-	credit_card_vend decimal(12,2),
+	system_amount decimal(12,2) not null,
+	amount_counted decimal(12,2) not null,
 	cash_diffrence decimal(12,2),
+	credit_card_system decimal(12,2),
 	credit_card_machine decimal(12,2),
 	cc_diference decimal(12,2),
-	paidout_amount decimal(12,2),
-	paidin_amount decimal(12,2)
+	paidout_amount decimal(12,2) default 0,
+	paidin_amount decimal(12,2) default 0,
 	--Constraints
 	--PK
 	Constraint PK_close_register Primary Key(close_register_id),
 	--FK
-	Constraint FK_user_close_register Foreign Key(user_employee_fk) references user_employee(employee_id)
-
+	Constraint FK_user_close_register Foreign Key(user_employee_fk) references user_employee(employee_id),
+	Constraint FK_schedule Foreign Key(schedule_fk) references schedule(schedule_id)
 )
 --this method was created to implement faster searches by id 
 Create Clustered Index close_register_idx
@@ -32,7 +43,6 @@ Go
 
 Drop table if exists close_register_invoices
 Go
-
 create table close_register_invoices
 (
 	close_register_invoices_id int Identity(1,1),

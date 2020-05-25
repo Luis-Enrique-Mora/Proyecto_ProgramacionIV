@@ -7,7 +7,7 @@ CREATE TABLE persons (
     id_person integer Identity (1,1) NOT NULL,
     person_name varchar(25) NOT NULL,
     last_name varchar(25) NOT NULL,
-    email varchar(100) unique,
+    email varchar(100) unique not null,
     --Constraints
 	--primary key
 	Constraint PK_persons Primary Key(id_person)

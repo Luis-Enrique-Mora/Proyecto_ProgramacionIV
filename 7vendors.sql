@@ -4,9 +4,9 @@ Go
 Drop table if Exists vendors
 Go
 CREATE TABLE vendors (
-    vendor_id integer Identity (1,1) NOT NULL,
+    vendor_id int Identity (1,1) NOT NULL,
     vendor_name varchar(25) NOT NULL,
-    person_fk integer NOT NULL,
+    person_fk int NOT NULL,
     company_name varchar(45) NOT NULL,
 	--Constraints
 	--primary key
@@ -15,7 +15,5 @@ CREATE TABLE vendors (
 	Constraint FK_person_vendor Foreign Key (person_fk) References persons(id_person)
 
 )
---this method was created to implement faster searches by id 
-Create Clustered Index vendors_idx
-On vendors(vendor_id)
+
 Go

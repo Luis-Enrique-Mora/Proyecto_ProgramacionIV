@@ -33,20 +33,16 @@ create table close_register
 	Constraint FK_user_close_register Foreign Key(user_employee_fk) references user_employee(employee_id),
 	Constraint FK_schedule Foreign Key(schedule_fk) references schedule(schedule_id)
 )
---this method was created to implement faster searches by id 
-Create Clustered Index close_register_idx
-On close_register(close_register_id)
 Go
 
 use SamaraOrganicsServer
 Go
-
 Drop table if exists close_register_invoices
 Go
 create table close_register_invoices
 (
 	close_register_invoices_id int Identity(1,1),
-	close_register_fk integer not null,
+	close_register_fk int not null,
 	invoice_fk int not null,
 	--constraints 
 	--PK
@@ -54,6 +50,40 @@ create table close_register_invoices
 	Constraint FK_close_register_invoices Foreign Key(invoice_fk) references invoices(invoice_id),
 	Constraint FK_close_register Foreign Key (close_register_fk) references close_register(close_register_id)
 )
-Create Clustered Index close_register_invoices_idx
-On close_register_invoices(close_register_fk)
+Go
+
+use SamaraOrganicsServer
+Go
+Drop table if Exists paid_in
+create table paid_in
+(
+	paid_in_id int Identity(1,1),
+	paid_in_date date not null,
+	paid_in_description varchar(200) not null,
+	paid_in_amount decimal(12,2) not null,
+	money_account_fk int not null,
+	--Constraints
+	--PK
+	Constraint PK_paid_in Primary Key (paid_in_id),
+	--FK
+	Constraint FK_paid_in_money_account Foreign Key(money_account_fk) References money_accounts(money_account_id)
+)
+Go
+
+use SamaraOrganicsServer
+Go
+Drop table if Exists paid_in_close_register
+Go
+create table paid_in_close_register
+(
+	paid_in_close_register_id int Identity(1,1),
+	close_register_fk int not null,
+	paid_in_fk int not null,
+	--Constraints
+	--PK
+	Constraint PK_paid_in_close_register Primary Key (paid_in_close_register_id),
+	--FK
+	Constraint FK_paid_in_money_account_close_register Foreign Key(close_register_fk) References close_register(close_register_id),
+	Constraint FK_paid_in_close_register Foreign Key(paid_in_fk) References paid_in(paid_in_id)
+)
 Go

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SamaraOrganicsSystem.Data;
+using SamaraOrganicsSystem.Models;
 
 namespace SamaraOrganicsSystem.Controllers
 {
@@ -11,24 +14,48 @@ namespace SamaraOrganicsSystem.Controllers
     [ApiController]
     public class PersonsController : ControllerBase
     {
-        // GET: api/Persons
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly SamaraOrganicsServerContext _db;
+        public PersonsController(SamaraOrganicsServerContext db)
         {
-            return new string[] { "value1", "value2" };
+            _db = db;
+        }
+        // GET: api/Persons/index
+        [HttpGet("index")]
+        public async Task<IActionResult> Index()
+        {
+            var PersonsList = await _db.Persons.ToListAsync();
+
+            if (PersonsList != null)
+            {
+                return Ok(PersonsList);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        // GET: api/Persons/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: api/Persons/get/5
+        [HttpGet("{id}", Name = "get")]
+        public async Task<IActionResult> GetPerson(int id)
         {
-            return "value";
+            var findPerson = await _db.Persons.FirstOrDefaultAsync(per => per.IdPerson == id);
+
+            if(findPerson != null)
+            {
+                return Ok(findPerson);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         // POST: api/Persons
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Create(Persons person)
         {
+            
         }
 
         // PUT: api/Persons/5

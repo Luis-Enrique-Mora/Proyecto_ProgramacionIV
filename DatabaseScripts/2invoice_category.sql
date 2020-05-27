@@ -9,6 +9,6 @@ create table invoice_category
 	category_description varchar(200),
 	--Constraints
 	--PK
-	Constraint PK_invoice_category Primary Key (invoice_category_id)
+	Constraint PK_invoice_category Primary Key clustered (invoice_category_id)
 )
 Go

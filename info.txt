@@ -1,0 +1,12 @@
+server = DESKTOP-C2HGAT0\SQLEXPRESS
+DB = SamaraOrganicsServer
+
+traer nombres de usuarios y password hash
+select name,password_hash from sys.sql_logins
+
+"AppSettings": {
+    "Token": "hOmBv538QKwDYtaCDanVluxhw9cF4GO1"
+  },
+https://www.youtube.com/watch?v=CLVJVA9cTuU
+data-first command
+Scaffold-DbContext "Data Source=DESKTOP-C2HGAT0\SQLEXPRESS;Initial Catalog=SamaraOrganicsServer;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

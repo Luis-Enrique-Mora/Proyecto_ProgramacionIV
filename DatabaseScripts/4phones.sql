@@ -6,11 +6,11 @@ Go
 CREATE TABLE phones (
     phone_id int Identity (1,1) NOT NULL,
     phone_number varchar(50) NOT NULL,
-    person_fk int NOT NULL,
+    person_fk int  not NULL,
     --Constraints
 	--primary key
-	Constraint PK_phones Primary Key (phone_id),
+	Constraint PK_phones Primary Key clustered (phone_id),
 	--foreign keys
-	Constraint FK_person_phone Foreign Key (person_fk) References persons (id_person)
+	Constraint FK_person_phone Foreign Key (person_fk) References persons (id_person) ON UPDATE CASCADE
 )
 Go

@@ -10,6 +10,6 @@ CREATE TABLE invoice_status (
     status_description varchar(200),
     --Constraints
 	--primary key
-	Constraint PK_invoice_status Primary Key (status_id)
+	Constraint PK_invoice_status Primary Key clustered (status_id)
 )
 Go

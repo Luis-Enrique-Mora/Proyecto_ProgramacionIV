@@ -11,8 +11,8 @@ CREATE TABLE user_employee (
     salary_per_hour numeric(8,2) NOT NULL,
     --Constraints
 	--primary key
-	Constraint PK_user_employee Primary Key (employee_id),
+	Constraint PK_user_employee Primary Key clustered (employee_id),
 	--foreign keys
-	Constraint FK_user_employee Foreign Key (user_fk) References users (id_user)
+	Constraint FK_user_employee Foreign Key (user_fk) References users (id_user) On Delete No Action
 )
 Go

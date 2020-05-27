@@ -8,7 +8,7 @@ create table schedule
 	schedule_name varchar(12),
 	--Constraints
 	--PK
-	Constraint PK_schedule Primary Key(schedule_id)
+	Constraint PK_schedule Primary Key clustered(schedule_id)
 )
 Go
 Drop table if Exists close_register
@@ -30,8 +30,8 @@ create table close_register
 	--PK
 	Constraint PK_close_register Primary Key(close_register_id),
 	--FK
-	Constraint FK_user_close_register Foreign Key(user_employee_fk) references user_employee(employee_id),
-	Constraint FK_schedule Foreign Key(schedule_fk) references schedule(schedule_id)
+	Constraint FK_user_close_register Foreign Key(user_employee_fk) references user_employee(employee_id) On Delete No Action,
+	Constraint FK_schedule Foreign Key(schedule_fk) references schedule(schedule_id) On Delete No Action on Update no action
 )
 Go
 
@@ -47,8 +47,9 @@ create table close_register_invoices
 	--constraints 
 	--PK
 	Constraint PK_close_register_invoices Primary Key(close_register_invoices_id),
-	Constraint FK_close_register_invoices Foreign Key(invoice_fk) references invoices(invoice_id),
-	Constraint FK_close_register Foreign Key (close_register_fk) references close_register(close_register_id)
+	--FK
+	Constraint FK_close_register_invoices Foreign Key(invoice_fk) references invoices(invoice_id) On Delete No Action,
+	Constraint FK_close_register Foreign Key (close_register_fk) references close_register(close_register_id) On Delete No Action
 )
 Go
 
@@ -66,7 +67,7 @@ create table paid_in
 	--PK
 	Constraint PK_paid_in Primary Key (paid_in_id),
 	--FK
-	Constraint FK_paid_in_money_account Foreign Key(money_account_fk) References money_accounts(money_account_id)
+	Constraint FK_paid_in_money_account Foreign Key(money_account_fk) References money_accounts(money_account_id) On Delete No Action
 )
 Go
 
@@ -83,7 +84,7 @@ create table paid_in_close_register
 	--PK
 	Constraint PK_paid_in_close_register Primary Key (paid_in_close_register_id),
 	--FK
-	Constraint FK_paid_in_money_account_close_register Foreign Key(close_register_fk) References close_register(close_register_id),
-	Constraint FK_paid_in_close_register Foreign Key(paid_in_fk) References paid_in(paid_in_id)
+	Constraint FK_paid_in_money_account_close_register Foreign Key(close_register_fk) References close_register(close_register_id) On Delete No Action,
+	Constraint FK_paid_in_close_register Foreign Key(paid_in_fk) References paid_in(paid_in_id) On Delete No Action
 )
 Go

@@ -10,6 +10,6 @@ CREATE TABLE persons (
     email varchar(100) unique not null,
     --Constraints
 	--primary key
-	Constraint PK_persons Primary Key(id_person)
+	Constraint PK_persons Primary Key clustered(id_person)
 )
 Go

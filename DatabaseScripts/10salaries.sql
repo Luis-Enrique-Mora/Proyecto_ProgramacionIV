@@ -13,8 +13,8 @@ CREATE TABLE salaries (
 
     --Constraints
 	--primary key
-	Constraint PK_salaries Primary Key (salary_id),
+	Constraint PK_salaries Primary Key clustered(salary_id),
 	--foreign key
-	Constraint FK_employee_salary Foreign Key (employee_fk) References user_employee (employee_id)
+	Constraint FK_employee_salary Foreign Key (employee_fk) References user_employee (employee_id) On delete no Action
 )
 Go

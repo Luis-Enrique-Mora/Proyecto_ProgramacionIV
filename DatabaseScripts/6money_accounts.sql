@@ -9,7 +9,7 @@ Create table money_accounts
 	global_amount decimal(15,2),
 	--constraints
 	--PK
-	Constraint PK_money_account Primary Key (money_account_id)
+	Constraint PK_money_account Primary Key clustered (money_account_id)
 )
 Go
 
@@ -27,9 +27,9 @@ create table money_accounts_history
 	actual_amount decimal(12,2),
 	--constraints
 	--PK
-	Constraint PK_history_safe_dollars Primary Key (history_id),
+	Constraint PK_money_accounts_history Primary Key (history_id),
 	--FK
-	Constraint FK_accounts Foreign Key (account_fk) references money_accounts(money_account_id)
+	Constraint FK_accounts_history Foreign Key (account_fk) references money_accounts(money_account_id) On Delete No Action
 )
 Go
 

@@ -10,9 +10,9 @@ CREATE TABLE vendors (
     company_name varchar(45) NOT NULL,
 	--Constraints
 	--primary key
-	Constraint PK_vendors Primary Key (vendor_id),
+	Constraint PK_vendors Primary Key clustered(vendor_id),
 	--Foreign keys
-	Constraint FK_person_vendor Foreign Key (person_fk) References persons(id_person)
+	Constraint FK_person_vendor Foreign Key (person_fk) References persons(id_person) On Delete No Action
 
 )
 

@@ -1,33 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SamaraOrganicsSystem.Data;
-using SamaraOrganicsSystem.Models;
 
 namespace SamaraOrganicsSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonsController : ControllerBase
+    public class InvoiceStatusController : ControllerBase
     {
         private readonly SamaraOrganicsServerContext _db;
-        public PersonsController(SamaraOrganicsServerContext db)
+        public InvoiceStatusController( SamaraOrganicsServerContext db)
         {
             _db = db;
         }
-        // GET: api/Persons/index
+        // GET: api/InvoiceStatus
         [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
-            var PersonsList = await _db.Persons.ToListAsync();
-
-            if (PersonsList != null)
+            var statusList = await _db.InvoiceStatus.ToListAsync();
+            if(statusList != null)
             {
-                return Ok(PersonsList);
+                return Ok(statusList);
             }
             else
             {
@@ -35,30 +34,20 @@ namespace SamaraOrganicsSystem.Controllers
             }
         }
 
-        // GET: api/Persons/get/5
-        [HttpGet("{id}", Name = "get")]
-        public async Task<IActionResult> GetPerson(int id)
+        // GET: api/InvoiceStatus/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            var findPerson = await _db.Persons.FirstOrDefaultAsync(per => per.IdPerson == id);
-
-            if(findPerson != null)
-            {
-                return Ok(findPerson);
-            }
-            else
-            {
-                return NotFound();
-            }
+            return "value";
         }
 
-        // POST: api/Persons
+        // POST: api/InvoiceStatus
         [HttpPost]
-        public async Task<IActionResult> Create(Persons person)
+        public void Post([FromBody] string value)
         {
-            return Ok();
         }
 
-        // PUT: api/Persons/5
+        // PUT: api/InvoiceStatus/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

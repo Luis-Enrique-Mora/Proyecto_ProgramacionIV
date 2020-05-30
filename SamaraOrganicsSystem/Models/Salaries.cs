@@ -12,6 +12,6 @@ namespace SamaraOrganicsSystem.Models
         public decimal? SalaryAmount { get; set; }
         public int MoneyAccountFk { get; set; }
 
-        public virtual UserEmployee EmployeeFkNavigation { get; set; }
+        public virtual Employee EmployeeFkNavigation { get; set; }
     }
 }

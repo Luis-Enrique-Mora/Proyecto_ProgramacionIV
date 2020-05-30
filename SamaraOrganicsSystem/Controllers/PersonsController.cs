@@ -36,7 +36,7 @@ namespace SamaraOrganicsSystem.Controllers
         }
 
         // GET: api/Persons/get/5
-        [HttpGet("{id}", Name = "get")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetPerson(int id)
         {
             var findPerson = await _db.Persons.FirstOrDefaultAsync(per => per.IdPerson == id);
@@ -51,23 +51,6 @@ namespace SamaraOrganicsSystem.Controllers
             }
         }
 
-        // POST: api/Persons
-        [HttpPost]
-        public async Task<IActionResult> Create(Persons person)
-        {
-            return Ok();
-        }
-
-        // PUT: api/Persons/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

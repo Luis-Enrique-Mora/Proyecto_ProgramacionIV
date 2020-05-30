@@ -16,11 +16,11 @@ Go
 
 Drop table if Exists users
 Go
-CREATE TABLE users (
+Create Table users (
     id_user int Identity (1,1) NOT NULL,
     person_fk int NOT NULL,
-    password_hash binary NOT NULL,
-	password_salt binary not null,
+    password_hash varbinary(max) NOT NULL,
+	password_salt varbinary(max) not null,
     user_role_fk int NOT NULL,
     --Constraints
 	--primary key

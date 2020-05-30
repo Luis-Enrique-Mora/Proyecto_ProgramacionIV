@@ -17,7 +17,7 @@ create table close_register
 	close_register_id int Identity(1,1),
 	close_register_date date not null,
 	schedule_fk int not null,
-	user_employee_fk int not null,
+	user_fk int not null,
 	system_amount decimal(12,2) not null,
 	amount_counted decimal(12,2) not null,
 	cash_diffrence decimal(12,2),
@@ -30,7 +30,7 @@ create table close_register
 	--PK
 	Constraint PK_close_register Primary Key(close_register_id),
 	--FK
-	Constraint FK_user_close_register Foreign Key(user_employee_fk) references user_employee(employee_id) On Delete No Action,
+	Constraint FK_user_close_register Foreign Key(user_fk) references employee(employee_id) On Delete No Action,
 	Constraint FK_schedule Foreign Key(schedule_fk) references schedule(schedule_id) On Delete No Action on Update no action
 )
 Go

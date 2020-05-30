@@ -18,6 +18,7 @@ namespace SamaraOrganicsSystem.Data
 
         public virtual DbSet<CloseRegister> CloseRegister { get; set; }
         public virtual DbSet<CloseRegisterInvoices> CloseRegisterInvoices { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<InvoiceCategory> InvoiceCategory { get; set; }
         public virtual DbSet<InvoiceStatus> InvoiceStatus { get; set; }
         public virtual DbSet<Invoices> Invoices { get; set; }
@@ -29,7 +30,6 @@ namespace SamaraOrganicsSystem.Data
         public virtual DbSet<Phones> Phones { get; set; }
         public virtual DbSet<Salaries> Salaries { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }
-        public virtual DbSet<UserEmployee> UserEmployee { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Vendors> Vendors { get; set; }
@@ -82,7 +82,7 @@ namespace SamaraOrganicsSystem.Data
                     .HasColumnName("system_amount")
                     .HasColumnType("decimal(12, 2)");
 
-                entity.Property(e => e.UserEmployeeFk).HasColumnName("user_employee_fk");
+                entity.Property(e => e.UserFk).HasColumnName("user_fk");
 
                 entity.HasOne(d => d.ScheduleFkNavigation)
                     .WithMany(p => p.CloseRegister)
@@ -90,9 +90,9 @@ namespace SamaraOrganicsSystem.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_schedule");
 
-                entity.HasOne(d => d.UserEmployeeFkNavigation)
+                entity.HasOne(d => d.UserFkNavigation)
                     .WithMany(p => p.CloseRegister)
-                    .HasForeignKey(d => d.UserEmployeeFk)
+                    .HasForeignKey(d => d.UserFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_user_close_register");
             });
@@ -118,6 +118,37 @@ namespace SamaraOrganicsSystem.Data
                     .HasForeignKey(d => d.InvoiceFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_close_register_invoices");
+            });
+
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.ToTable("employee");
+
+                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+
+                entity.Property(e => e.Cedula)
+                    .IsRequired()
+                    .HasColumnName("cedula")
+                    .HasMaxLength(12)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LastName2)
+                    .IsRequired()
+                    .HasColumnName("last_name2")
+                    .HasMaxLength(12)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PersonFk).HasColumnName("person_fk");
+
+                entity.Property(e => e.SalaryPerHour)
+                    .HasColumnName("salary_per_hour")
+                    .HasColumnType("numeric(8, 2)");
+
+                entity.HasOne(d => d.PersonFkNavigation)
+                    .WithMany(p => p.Employee)
+                    .HasForeignKey(d => d.PersonFk)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_person_employee");
             });
 
             modelBuilder.Entity<InvoiceCategory>(entity =>
@@ -337,7 +368,7 @@ namespace SamaraOrganicsSystem.Data
                 entity.ToTable("persons");
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__persons__AB6E61643FE01E80")
+                    .HasName("UQ__persons__AB6E6164FB82A16B")
                     .IsUnique();
 
                 entity.Property(e => e.IdPerson).HasColumnName("id_person");
@@ -425,39 +456,6 @@ namespace SamaraOrganicsSystem.Data
                     .HasColumnName("schedule_name")
                     .HasMaxLength(12)
                     .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<UserEmployee>(entity =>
-            {
-                entity.HasKey(e => e.EmployeeId);
-
-                entity.ToTable("user_employee");
-
-                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-
-                entity.Property(e => e.Cedula)
-                    .IsRequired()
-                    .HasColumnName("cedula")
-                    .HasMaxLength(12)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.LastName2)
-                    .IsRequired()
-                    .HasColumnName("last_name2")
-                    .HasMaxLength(12)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.SalaryPerHour)
-                    .HasColumnName("salary_per_hour")
-                    .HasColumnType("numeric(8, 2)");
-
-                entity.Property(e => e.UserFk).HasColumnName("user_fk");
-
-                entity.HasOne(d => d.UserFkNavigation)
-                    .WithMany(p => p.UserEmployee)
-                    .HasForeignKey(d => d.UserFk)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_user_employee");
             });
 
             modelBuilder.Entity<UserRole>(entity =>

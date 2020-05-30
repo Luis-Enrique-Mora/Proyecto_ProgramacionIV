@@ -14,7 +14,7 @@ namespace SamaraOrganicsSystem.Models
         public int CloseRegisterId { get; set; }
         public DateTime CloseRegisterDate { get; set; }
         public int ScheduleFk { get; set; }
-        public int UserEmployeeFk { get; set; }
+        public int UserFk { get; set; }
         public decimal SystemAmount { get; set; }
         public decimal AmountCounted { get; set; }
         public decimal? CashDiffrence { get; set; }
@@ -25,7 +25,7 @@ namespace SamaraOrganicsSystem.Models
         public decimal? PaidinAmount { get; set; }
 
         public virtual Schedule ScheduleFkNavigation { get; set; }
-        public virtual UserEmployee UserEmployeeFkNavigation { get; set; }
+        public virtual Employee UserFkNavigation { get; set; }
         public virtual ICollection<CloseRegisterInvoices> CloseRegisterInvoices { get; set; }
         public virtual ICollection<PaidInCloseRegister> PaidInCloseRegister { get; set; }
     }

@@ -5,11 +5,6 @@ namespace SamaraOrganicsSystem.Models
 {
     public partial class Users
     {
-        public Users()
-        {
-            UserEmployee = new HashSet<UserEmployee>();
-        }
-
         public int IdUser { get; set; }
         public int PersonFk { get; set; }
         public byte[] PasswordHash { get; set; }
@@ -18,6 +13,5 @@ namespace SamaraOrganicsSystem.Models
 
         public virtual Persons PersonFkNavigation { get; set; }
         public virtual UserRole UserRoleFkNavigation { get; set; }
-        public virtual ICollection<UserEmployee> UserEmployee { get; set; }
     }
 }

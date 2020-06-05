@@ -73,5 +73,9 @@ C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\b
 C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\obj\Debug\netcoreapp3.1\SamaraOrganicsSystem.csproj.CoreCompileInputs.cache
 C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\obj\Debug\netcoreapp3.1\SamaraOrganicsSystem.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\luise\OneDrive\Documentos\Programing IV\Proyecto\SamaraOrganicsSystem\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

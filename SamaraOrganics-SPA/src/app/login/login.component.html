@@ -1,23 +1,23 @@
 
-<div *ngIf="!loggedIn()" class="container col-5 mt-5" style="text-align: center;">
+<div class="container col-5" style="position: absolute; text-align: center; left: 0px; top: 150px; right: 0px; bottom: 0px;">
  
-  <form  #loginForm = "ngForm" class="form-control" (ngSubmit) = "login()">
-      <img src="/src/favicon.ico"/>
-      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+  <form *ngIf="!loggedIn()"  #loginForm = "ngForm" (ngSubmit) = "login()">
+      <h1>Samara Organics</h1>
+      <h2 class="h1 mb-3">Mercado</h2>
 
-      <input type="email" name="Email" id="inputEmail" class="form-control"
-      placeholder="Email address" required [(ngModel)] = "model.Email">
+      <input type ="email" name="email" id="inputEmail" class="form-control"
+      placeholder="Email address" required [(ngModel)] = "model.Email"/>
 
       <input type="password" name="Password" id="inputPassword" class="form-control" 
-      placeholder="Password" required [(ngModel)] = "model.Password" >
+      placeholder="Password" required [(ngModel)] = "model.Password"/>
     
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"/> Remember me
         </label>
       </div>
 
-      <button [disabled] = "!loginForm.valid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button [disabled] = "!loginForm.valid" class="btn btn-lg btn-success btn-block" type="submit">Sign in</button>
   
   </form>
 

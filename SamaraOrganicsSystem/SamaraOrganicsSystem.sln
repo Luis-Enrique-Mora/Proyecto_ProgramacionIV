@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamaraOrganicsSystem", "SamaraOrganicsSystem.csproj", "{35D4B74C-A82A-4DA3-81D5-1EC8DC81879F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFood", "..\..\Practicas\FastFood\FastFood\FastFood.csproj", "{BF2C63DC-A441-46F3-BDEE-1F931F751C3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatingApp.API", "..\..\..\..\..\DatingApp\DatingApp.API\DatingApp.API.csproj", "{6DD09730-493A-4E5D-A355-D9C5C67E540F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{35D4B74C-A82A-4DA3-81D5-1EC8DC81879F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35D4B74C-A82A-4DA3-81D5-1EC8DC81879F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35D4B74C-A82A-4DA3-81D5-1EC8DC81879F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF2C63DC-A441-46F3-BDEE-1F931F751C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF2C63DC-A441-46F3-BDEE-1F931F751C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF2C63DC-A441-46F3-BDEE-1F931F751C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF2C63DC-A441-46F3-BDEE-1F931F751C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD09730-493A-4E5D-A355-D9C5C67E540F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD09730-493A-4E5D-A355-D9C5C67E540F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD09730-493A-4E5D-A355-D9C5C67E540F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD09730-493A-4E5D-A355-D9C5C67E540F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

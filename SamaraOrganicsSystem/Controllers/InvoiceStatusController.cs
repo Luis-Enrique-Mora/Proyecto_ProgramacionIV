@@ -57,11 +57,11 @@ namespace SamaraOrganicsSystem.Controllers
 
             if (checkExistence.Count() > 0)
             {
-                return false;
+                return true;
             }
             else 
             {
-                return true;
+                return false;
             } 
         }
         // POST: api/InvoiceStatus/insert
@@ -72,15 +72,16 @@ namespace SamaraOrganicsSystem.Controllers
             {
                 bool exists = CheckIfExists(status.StatusName);
 
-                if (exists)
-                {
-                    return BadRequest("This status already exists");
-                }
-                else
+                if (!exists)
                 {
                     _db.Add(status);
                     await _db.SaveChangesAsync();
                     return Ok("Invoice Status saved");
+                    
+                }
+                else
+                {
+                    return BadRequest("This status already exists");
                 }
             }
             else

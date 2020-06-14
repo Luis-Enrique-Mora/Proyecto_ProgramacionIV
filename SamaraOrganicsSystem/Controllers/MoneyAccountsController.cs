@@ -31,6 +31,19 @@ namespace SamaraOrganicsSystem.Controllers
             return NotFound("Sorry, We couldn't find any Account");
         }
 
+        public bool SearchAccount(int? id)
+        {
+            var find = _db.MoneyAccounts.Where(m => m.MoneyAccountId == id).FirstOrDefault();
+            if (find != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         [HttpGet]
         [Route("get/{id}")]
         public async Task<IActionResult> GetAccount(int? id)
@@ -48,6 +61,21 @@ namespace SamaraOrganicsSystem.Controllers
             }
 
             return NotFound("Sorrry, we could not find this Account");
+        }
+
+        [HttpGet]
+        [Route("delete/{id}")]
+        public async Task<IActionResult> DeleteAccount(int? id)
+        {
+            if (SearchAccount(id))
+            {
+                var Account = await _db.MoneyAccounts.Where(a => a.MoneyAccountId == id).FirstOrDefaultAsync();
+                _db.Remove(Account);
+                await _db.SaveChangesAsync();
+                return Ok("Account deleted");
+            }
+
+            return BadRequest("Sorry, we couldn't delete the account");
         }
     }
 }

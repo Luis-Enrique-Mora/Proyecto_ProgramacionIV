@@ -21,6 +21,7 @@ namespace SamaraOrganicsSystem.Controllers
         {
             _db = db;
         }
+
         [HttpGet("index")]
         public async Task<IActionResult> Index()
         {

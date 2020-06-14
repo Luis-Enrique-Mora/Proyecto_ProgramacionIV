@@ -1,5 +1,5 @@
 <div class="container" style="position: absolute; left: 0px; top: 100px; right: 0px; bottom: 0px;">
-    <button type="button" class="btn btn-success" [routerLink] ="['/invoices/create']"
+    <button (click)="loadInvoiceParameters()" type="button" class="btn btn-success" [routerLink] ="['/invoices/create']"
       tooltip="Press to add a new invoice">
       Add new <i class="fa fa-plus" aria-hidden="true"></i>
     </button>

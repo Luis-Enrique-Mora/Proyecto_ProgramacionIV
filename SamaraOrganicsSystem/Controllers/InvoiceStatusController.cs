@@ -35,7 +35,8 @@ namespace SamaraOrganicsSystem.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("get/{id}")]
         public async Task<IActionResult> GetStatus(int id)
         {
             var findStatus = await _db.InvoiceStatus.Where(status => status.StatusId == id)
@@ -46,9 +47,8 @@ namespace SamaraOrganicsSystem.Controllers
             }
             else
             {
-                return NotFound();
+                return NotFound("Sorry, we couldn't find the status");
             }
-
         }
 
         public bool CheckIfExists(string statusName)
@@ -80,14 +80,13 @@ namespace SamaraOrganicsSystem.Controllers
                 {
                     _db.Add(status);
                     await _db.SaveChangesAsync();
-                    return Ok("Invoice Satus saved");
+                    return Ok("Invoice Status saved");
                 }
             }
             else
             {
                 return BadRequest();
-            }
-            
+            }  
         }
         // POST: api/InvoiceStatus/edit
         [HttpPost("edit")]
@@ -117,7 +116,8 @@ namespace SamaraOrganicsSystem.Controllers
             }
         }
         // POST: api/InvoiceStatus/delete
-        [HttpPost("delete")]
+        [HttpPost]
+        [Route("delete/{id}")]
         public async Task<IActionResult> deleteStatus(int? id)
         {
             if(id != null)

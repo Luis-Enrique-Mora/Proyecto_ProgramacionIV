@@ -1,16 +1,24 @@
-<div class="container">
+<div class="container" style="position: absolute; align-content: 0px; top: 150px; right: 0px; bottom: 0px;">
   <form #createInvoiceForm="ngForm">
     <div class="row">
-      <div class="form-group">
-
+      <div class="col-2">
+        <input type="number" class="form-control" placeholder="Invoice #">
       </div>
-      <div class="col-xs-12 col-12 col-md-4 form-group">
+      <div class="col-xs-12 col-12 col-md-2 form-group">
         <input type="text"
-               placeholder="Datepicker"
+               placeholder="  Day/Month/Year"
                class="form-control"
                bsDatepicker>
       </div>
-      
     </div>
+    <div class="col-2 row">
+      <input type="number" class="form-control" placeholder="Invoice amount">
+    </div>
+
+      <button class="btn btn-success">x</button>
+      <select class="form-control col-xs-12 col-12 col-md-2">
+          <option *ngFor="let item of InvoiceDtos.VendorsList" ></option>
+      </select>
+      
   </form>
 </div>

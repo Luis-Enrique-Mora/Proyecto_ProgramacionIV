@@ -8,11 +8,16 @@ import { CreateInvoiceVM } from 'src/app/_models/CreateInvoiceVM';
   templateUrl: './create-invoice.component.html',
   styleUrls: ['./create-invoice.component.css']
 })
-export class CreateInvoiceComponent implements OnInit {
+export class CreateInvoiceComponent implements OnInit{
 
-  constructor(private invoiceService: InvoicesService, private alertify: AlertifyService) { }
+  constructor(private invoiceService: InvoicesService, private alertify: AlertifyService) {
+    this.loadInvoiceParameters();
+   }
+
   InvoiceDtos: CreateInvoiceVM;
+
   ngOnInit() {
+    this.loadInvoiceParameters();
   }
 
   loadInvoiceParameters(){

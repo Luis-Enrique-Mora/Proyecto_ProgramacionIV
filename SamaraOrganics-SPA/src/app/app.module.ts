@@ -8,7 +8,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
 import {appRoutes} from '../app/routes';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';

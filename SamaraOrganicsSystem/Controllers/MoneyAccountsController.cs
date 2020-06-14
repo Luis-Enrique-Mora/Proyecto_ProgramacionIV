@@ -30,5 +30,24 @@ namespace SamaraOrganicsSystem.Controllers
 
             return NotFound("Sorry, We couldn't find any Account");
         }
+
+        [HttpGet]
+        [Route("get/{id}")]
+        public async Task<IActionResult> GetAccount(int? id)
+        {
+            var account = await _db.MoneyAccounts.Where(a => a.MoneyAccountId == id)
+                .Select(a => new {
+                a.MoneyAccountId, 
+                a.NameMoneyAccount, 
+                a.DescriptionMoneyAccount })
+                .FirstOrDefaultAsync();
+
+            if(account != null)
+            {
+                return Ok(account);
+            }
+
+            return NotFound("Sorrry, we could not find this Account");
+        }
     }
 }

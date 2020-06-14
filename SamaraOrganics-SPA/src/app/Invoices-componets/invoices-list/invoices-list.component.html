@@ -1,0 +1,36 @@
+<div class="container" style="position: absolute; left: 0px; top: 100px; right: 0px; bottom: 0px;">
+    <button type="button" class="btn btn-success" [routerLink] ="['/invoices/create']"
+      tooltip="Press to add a new invoice">
+      Add new <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+    <hr>
+</div>
+<div class="container" style="position: absolute; left: 0px; top: 150px; right: 0px; bottom: 0px;">
+  <h2>Invoices list</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Invoice number</th>
+        <th scope="col">Date</th>
+        <th scope="col">Vendor</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
+        <th scope="col">Account</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let invoices of invoiceList">
+        <th>{{invoices.invoiceNumber}}</th>
+        <th>{{invoices.invoiceDate | date:'mediumDate'}}</th>
+        <th>{{invoices.vendorName}}</th>
+        <th>{{invoices.invoiceAmount}}</th>
+        <th>{{invoices.categoryName}}</th>
+        <th>{{invoices.statusName}}</th>
+        <th>{{invoices.invoiceAmount}}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

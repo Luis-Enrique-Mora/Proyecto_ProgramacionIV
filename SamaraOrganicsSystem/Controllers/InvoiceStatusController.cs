@@ -39,7 +39,7 @@ namespace SamaraOrganicsSystem.Controllers
         public async Task<IActionResult> GetStatus(int id)
         {
             var findStatus = await _db.InvoiceStatus.Where(status => status.StatusId == id)
-                            .Select(status => new { status.StatusId, status.StatusName, status.StatusDescription }).ToListAsync();
+                            .Select(status => new { status.StatusId, status.StatusName, status.StatusDescription }).FirstOrDefaultAsync();
             if(findStatus != null)
             {
                 return Ok(findStatus);

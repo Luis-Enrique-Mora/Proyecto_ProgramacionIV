@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
   @Output() signedIn = new EventEmitter();
 
-  constructor(private authService: AuthService, private alertify: AlertifyService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService, private router: Router ) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
       this.alertify.success('Logged in succesfully');
     }, error => {
       this.alertify.error('failed to login');
+    }, () =>  {
+      this.router.navigate(['/dashboard']);
     });
   }
 

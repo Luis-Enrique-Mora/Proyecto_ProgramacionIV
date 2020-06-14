@@ -1,12 +1,33 @@
 
-<nav *ngIf = "loggedInMode()" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Samara Organics</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a (click) ="logout()"class="nav-link" href="#">Sign out</a>
-    </li>
-  </ul>
+<nav *ngIf = "loggedInMode()" class="navbar navbar-expand-md navbar-dark sticky-top bg-success shadow">
+  
+  <div class="container">
+
+    <a class="navbar-brand" [routerLink]="['/dashboard']">Samara Organics</a>
+    <div class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/invoices']">Invoices</a>
+        </li>
+    </div>
+
+    <div class="dropdown" dropdown>
+
+      <a class="dropdown-toggle text-light" dropdownToggle>
+        Welcome, {{authService.decodedToken.unique_name}}!
+      </a>
+      <div *dropdownMenu class="dropdown-menu mt-2">
+
+          <a class="dropdown-item"> <i class="fa fa-user"></i> Profile</a>
+          <div class="dropdown-divider"></div>
+          <a (click) ="logout()"class="dropdown-item"> <i class="fa fa-sign-out"></i> Sign out</a>
+          
+      </div>
+
+    </div>
+  </div>
+
 </nav>

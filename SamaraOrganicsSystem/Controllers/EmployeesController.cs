@@ -47,23 +47,5 @@ namespace SamaraOrganicsSystem.Controllers
                 return NotFound();
             }
         }
-
-        // POST: api/Employees
-        [HttpPost]
-        public void Post()
-        {
-        }
-
-        // PUT: api/Employees/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

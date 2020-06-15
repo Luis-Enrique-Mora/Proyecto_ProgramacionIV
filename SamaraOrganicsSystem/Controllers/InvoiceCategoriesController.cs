@@ -87,7 +87,7 @@ namespace SamaraOrganicsSystem.Controllers
             if (SearchCategory(id))
             {
                 var categoryFromDB = await _db.InvoiceCategory.Where(c => c.InvoiceCategoryId == id).FirstOrDefaultAsync();
-                _db.Remove(categoryFromDB);
+                _db.InvoiceCategory.Remove(categoryFromDB);
 
                 await _db.SaveChangesAsync();
                 return Ok("The category has been deleted successfully");

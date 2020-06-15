@@ -30,6 +30,7 @@ namespace SamaraOrganicsSystem.Controllers
                     v.PersonFkNavigation.PersonName, 
                     v.PersonFkNavigation.LastName, 
                     v.PersonFkNavigation.Phones }).ToListAsync();
+            
             if(vendorsList.Count > 0)
             {
                 return Ok(vendorsList);
@@ -55,6 +56,21 @@ namespace SamaraOrganicsSystem.Controllers
             }
 
             return BadRequest("Sorry, but we couldn't find the vendor");
+        }
+
+        [HttpPost]
+        [Route("delete/{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var exists = await _db.Vendors.Where(v => v.VendorId == id).FirstOrDefaultAsync();
+            
+            if(exists != null)
+            {
+                _db.Vendors.Remove(exists);
+                await _db.SaveChangesAsync();
+                return Ok("Vendor deleted");
+            }
+            return BadRequest("Something went wrong, seems like the invoice does not exists");
         }
 
     }

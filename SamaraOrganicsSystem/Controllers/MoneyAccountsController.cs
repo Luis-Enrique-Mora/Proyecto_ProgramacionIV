@@ -100,9 +100,14 @@ namespace SamaraOrganicsSystem.Controllers
         {
             if (SearchAccount(account.MoneyAccountId))
             {
-
+                var accountFromDB = await _db.MoneyAccounts.Where(a=> a.MoneyAccountId == account.MoneyAccountId).FirstOrDefaultAsync();
+                accountFromDB.NameMoneyAccount = account.NameMoneyAccount;
+                accountFromDB.DescriptionMoneyAccount = account.DescriptionMoneyAccount;
+                await _db.SaveChangesAsync();
+                return Ok("Updated");
             }
-            return Ok("Updated");
+            return BadRequest("Sorry there was an error");
+            
         }
 
         [HttpPost]
@@ -112,7 +117,7 @@ namespace SamaraOrganicsSystem.Controllers
             if (SearchAccount(id))
             {
                 var Account = await _db.MoneyAccounts.Where(a => a.MoneyAccountId == id).FirstOrDefaultAsync();
-                _db.Remove(Account);
+                _db.MoneyAccounts.Remove(Account);
                 await _db.SaveChangesAsync();
                 return Ok("Account deleted");
             }

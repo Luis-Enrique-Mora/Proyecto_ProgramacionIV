@@ -38,6 +38,20 @@ namespace SamaraOrganicsSystem.Controllers
             }
         }
 
+        public bool Exists(string categoryName)
+        {
+            var checkExistence = _db.InvoiceCategory.Where(a => a.CategoryName.ToLower() == categoryName.ToLower());
+
+            if (checkExistence.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         [HttpGet]
         [Route("get/{id}")]
         public async Task<IActionResult> GetCategory(int? id)
@@ -52,6 +66,20 @@ namespace SamaraOrganicsSystem.Controllers
             {
                 return NotFound("The Category wasn't found");
             }
+        }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> Create(InvoiceCategory category)
+        {
+            if (!Exists(category.CategoryName))
+            {
+                _db.InvoiceCategory.Add(category);
+                await _db.SaveChangesAsync();
+                return Ok("Category saved");
+            }
+
+            return BadRequest("Sorry something went wrong");
         }
         public bool SearchCategory(int? id)
         {

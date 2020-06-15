@@ -74,7 +74,7 @@ namespace SamaraOrganicsSystem.Controllers
 
                 if (!exists)
                 {
-                    _db.Add(status);
+                    _db.InvoiceStatus.Add(status);
                     await _db.SaveChangesAsync();
                     return Ok("Invoice Status saved");
                     

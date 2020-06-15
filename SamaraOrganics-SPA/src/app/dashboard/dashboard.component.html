@@ -1,27 +1,11 @@
-<div class="container col-12" style="position:absolute; top: 150px;">
+<div class="container" style="top: 150px;">
 
-  <div class="row offset-2">
-    <div class="card text-white bg-primary mr-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+  <div class="row pt-3 offset-1">
+    <div *ngFor="let item of AccountList" class="card text-white bg-success mr-3 mt-5 col-3" style="max-width: 18rem;">
+      <div class="card-header">{{item.nameMoneyAccount}}</div>
       <div class="card-body">
-        <h5 class="card-title">Primary card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-    
-    <div class="card text-white bg-primary mr-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
-      <div class="card-body">
-        <h5 class="card-title">Primary card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-    
-    <div class="card text-white bg-primary mr-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
-      <div class="card-body">
-        <h5 class="card-title">Primary card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">{{item.globalAmount}}</h5>
+        <p class="card-text">{{item.descriptionMoneyAccount}}</p>
       </div>
     </div>
   </div>

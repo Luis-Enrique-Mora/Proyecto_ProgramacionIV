@@ -7,7 +7,7 @@
 </div>
 <div class="container" style="position: absolute; left: 0px; top: 150px; right: 0px; bottom: 0px;">
   <h2>Invoices list</h2>
-  <table class="table table-striped">
+  <table class="table table-striped" style="text-align: center;">
     <thead>
       <tr>
         <th scope="col">Invoice number</th>
@@ -19,7 +19,7 @@
         <th scope="col">Account</th>
       </tr>
     </thead>
-    <tbody >
+    <tbody>
       <tr *ngFor="let invoices of invoiceList">
         <th>{{invoices.invoiceNumber}}</th>
         <th>{{invoices.invoiceDate | date:'mediumDate'}}</th>
@@ -27,7 +27,7 @@
         <th>{{invoices.invoiceAmount}}</th>
         <th>{{invoices.categoryName}}</th>
         <th>{{invoices.statusName}}</th>
-        <th>{{invoices.invoiceAmount}}</th>
+        <th>{{invoices.nameMoneyAccount}}</th>
       </tr>
     </tbody>
   </table>

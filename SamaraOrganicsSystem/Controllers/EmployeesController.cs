@@ -34,7 +34,8 @@ namespace SamaraOrganicsSystem.Controllers
         }
 
         // GET: api/findemployee/5
-        [HttpGet("{id}",Name ="findemployee")]
+        [HttpGet]
+        [Route("get/{id}")]
         public async Task<IActionResult> Get (int id)
         {
             var findEmployee = await _db.Employee.FirstOrDefaultAsync(emp => emp.EmployeeId == id);

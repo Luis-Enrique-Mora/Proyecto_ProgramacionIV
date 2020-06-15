@@ -25,7 +25,7 @@ namespace SamaraOrganicsSystem.Controllers
         [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
-            var AccountsList = await _db.MoneyAccounts.Select(a => new { a.MoneyAccountId, a.NameMoneyAccount, a.DescriptionMoneyAccount }).ToListAsync();
+            var AccountsList = await _db.MoneyAccounts.Select(a => new { a.MoneyAccountId, a.NameMoneyAccount, a.GlobalAmount, a.DescriptionMoneyAccount }).ToListAsync();
 
             if(AccountsList.Count > 0)
             {

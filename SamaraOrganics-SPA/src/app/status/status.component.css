@@ -1,0 +1,14 @@
+.fa-trash-o{
+    color: red;
+    cursor: pointer;
+}
+
+.fa-pencil-square-o{
+    color: #88C425;
+    cursor: pointer;
+}
+
+#list{
+    font-weight: lighter;
+    font-family: Arial;
+}

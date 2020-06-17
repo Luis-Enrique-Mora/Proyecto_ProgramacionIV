@@ -1,0 +1,52 @@
+<div class="container pt-5">
+  <hr>
+  <div class="row">
+    <div class="col-6">
+      <div class="h3 mb-3">Status list</div>
+      <table class="table table-striped">
+      
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="list" *ngFor="let item of statuslist">
+            <th>{{item.statusName}}</th>
+  
+            <th>{{item.statusDescription}}</th>
+  
+            <th>
+              <i class="fa fa-lg fa-pencil-square-o mr-3" aria-hidden="true"></i>
+              <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+            </th>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6">
+      <div class="h3">Create Status</div>
+      <hr>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Status name</span>
+        </div>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Descrption </span>
+        </div>
+        <textarea class="form-control" aria-label="Descrption"></textarea>
+      </div>
+
+      <button type="button" class="btn btn-block btn-success">Create</button>
+
+    </div>
+  </div>
+
+</div>

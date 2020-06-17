@@ -5,3 +5,8 @@
 .navbar{
     background-color: #FA6900;
 }
+
+.fa-cog{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}

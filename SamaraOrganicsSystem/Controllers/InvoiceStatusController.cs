@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace SamaraOrganicsSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class InvoiceStatusController : ControllerBase
     {
         private readonly SamaraOrganicsServerContext _db;
@@ -24,7 +26,7 @@ namespace SamaraOrganicsSystem.Controllers
         [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
-            var statusList = await _db.InvoiceStatus.ToListAsync();
+            var statusList = await _db.InvoiceStatus.Select(s=> new{s.StatusId, s.StatusName, s.StatusDescription}).ToListAsync();
             if(statusList != null)
             {
                 return Ok(statusList);

@@ -19,6 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateInvoiceComponent } from '../app/Invoices-componets/create-invoice/create-invoice.component';
 import { DetailsInvoiceComponent } from '../app/Invoices-componets/details-invoice/details-invoice.component';
 import { InvoicesListComponent } from '../app/Invoices-componets/invoices-list/invoices-list.component';
+import { AdminComponent } from './admin/admin.component';
+import { StatusComponent } from './status/status.component';
 
 @NgModule({
    declarations: [
@@ -29,7 +31,9 @@ import { InvoicesListComponent } from '../app/Invoices-componets/invoices-list/i
       InvoicesListComponent,
       DashboardComponent,
       CreateInvoiceComponent,
-      DetailsInvoiceComponent
+      DetailsInvoiceComponent,
+      AdminComponent,
+      StatusComponent
    ],
    imports: [
       BrowserModule,

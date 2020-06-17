@@ -1,4 +1,5 @@
 export interface StatusDto {
-    id: number;
-    StatusName: string;
+    statusId: number;
+    statusName: string;
+    statusDescription: string;
 }
